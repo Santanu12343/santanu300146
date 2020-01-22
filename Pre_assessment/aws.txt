@@ -1,0 +1,90 @@
+question 1-: create Iam policy which grants access to s3 bucket only
+ans-
+step1-go to my account/console and select security credentials
+step2-click on continue to security credentials
+step3-select policies on the left menu,then click "create policy"
+step4-select create your own policy
+step5-fill out the "policy name",description" and "policy document" fields
+	example of policy-
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Action": [
+                        "s3:GetBucketLocation",
+                        "s3:ListAllMyBuckets"
+                      ],
+            "Resource": "arn:aws:s3:::*"
+        },
+        {
+            "Effect": "Allow",
+            "Action": "s3:*",
+            "Resource": [
+                "arn:aws:s3:::YOUR-BUCKET",
+                "arn:aws:s3:::YOUR-BUCKET/*"
+            ]
+        }
+    ]
+}
+
+step6-new policy is created after you click "create policy"
+step7-select "groups" on the left hand menu bar ,and click on "create new group"
+step8-enter a group name
+step9-search for policy name that you created
+step10-next, select "create a group"
+step11-select the group that you just created  and click "group actions" select "add users to group"
+step12-then,select your user and click "add users"
+step13-you can now use your,"access key id" and "secret access key" to run objectiveFS restricted to asingle bucket
+
+
+question no-3
+steps to launch ec2 instance
+step1-open the ec2 console by choosing ec2 under compute
+step2-from the amazon ec2 dashboard,choose launch instance
+step3-the choose an amazon machine image(ami)
+step4-choose an instance type(ex-t2.micro)
+step5-configure the instance
+step6-add storage
+step7-tag instance
+step8-configure security group
+step9-review instance launch
+
+
+questionno-2
+{
+"Version": "2012-10-17",
+"Statement": [{
+"Action": "ec2:*",
+"Resource": "*",
+"Effect": "Allow"
+},
+{
+"Action": "*",
+"Resource": "*",
+"Effect": "Deny"
+}
+]
+}
+
+This policy does not grant any permissions. To grant access, policies must have an action that has an applicable resource or condition.
+
+To fix this policy, you must use * in the Resource element. 
+
+question-5
+steps to create public and private subnets in vpc
+step1-create a vpc
+step2-create public subnet
+step3-create private subnet
+step4-create and attach internet gateway
+step5-add a route to public subnet
+
+
+question no-4
+steps to host static website in amazon s3
+step1-create an s3 bucket
+step2-enable static website hosting configuration for your bucket
+step3-upload your static website code to the bucket
+step4-accessing your static website content over the internet through the aws region specific web address
+step5-accessing your static website with a custom domain name using aws route 	53 service
+step6-non-www to www redirection
